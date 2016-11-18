@@ -1,8 +1,10 @@
 from setuptools import setup
 
+
 def readme():
     with open('README.rst') as file:
         return file.read()
+
 
 setup(
     name='compose_diff',
