@@ -7,18 +7,23 @@ class ComposeDiff:
     def __init__(self):
         pass
 
-    def diff_images(self, old, new):
+    def diff_images(self, old, new, filter):
         old = self.images(self.read(old))
         new = self.images(self.read(new))
 
         print('| {0} | {1} |'.format('Name', 'Version'))
         print('| - | - |')
         for key in sorted(set(list(old.keys()) + list(new.keys()))):
+            if filter is not None:
+                if filter not in key:
+                    continue
             version = self.format_version(
                 old=old[key] if key in old else None,
                 new=new[key] if key in new else None)
 
-            print('| {0} | {1} |'.format(key, version))
+            key = key.replace('_', '\_')
+            version = version.replace('_', '\_')
+            print('| {0} | {1} |'.format(key.split('/')[-1], version))
 
     @staticmethod
     def format_version(old, new):
@@ -52,6 +57,7 @@ class ComposeDiff:
 
     @staticmethod
     def split_image(data):
-        if ':' not in data:
+        if ':' not in data.split('/')[-1]:
             return data, 'latest'
-        return data.split(':')
+        splitted = data.split(':')
+        return ':'.join(splitted[:-1]), splitted[-1]

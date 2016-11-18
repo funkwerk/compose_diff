@@ -11,6 +11,9 @@ if __name__ == '__main__':
     parser.add_argument(
         '--images', action='store_const', const=True,
         help='diffs the images', default=False)
+    parser.add_argument(
+        '--filter', action='store',
+        help='just consider specific items', default=None)
     parser.add_argument('files', nargs=argparse.REMAINDER)
     args = parser.parse_args()
 
@@ -21,6 +24,6 @@ if __name__ == '__main__':
 
         old, new = args.files[0], args.files[1]
 
-        ComposeDiff().diff_images(old, new)
+        ComposeDiff().diff_images(old, new, args.filter)
     else:
         parser.print_help()

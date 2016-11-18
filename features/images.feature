@@ -36,3 +36,30 @@ Feature: Images
       | three | 1 (new) |
       | two | 2 (1) |
       """
+
+  Scenario: Filter
+    Given a file named "A.yml" with:
+      """
+      version: "2"
+      services:
+        one:
+          image: one:1
+        two:
+          image: two:1
+      """
+    And a file named "B.yml" with:
+      """
+      version: "2"
+      services:
+        one:
+          image: one:2
+        two:
+          image: two:2
+      """
+    When I run `bin/compose_diff --images --filter one A.yml B.yml`
+    Then it should pass with exactly:
+      """
+      | Name | Version |
+      | - | - |
+      | one | 2 (1) |
+      """
