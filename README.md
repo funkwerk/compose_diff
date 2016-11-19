@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/funkwerk/compose_diff.svg)](https://travis-ci.org/funkwerk/compose_diff)
-[![](https://badge.imagelayers.io/funkwerk/compose_diff.svg)](https://imagelayers.io/?images=funkwerk/compose_diff:latest 'funkwerk/compose_diff')
+[![Docker Build](https://img.shields.io/docker/automated/funkwerk/compose_diff.svg)](https://hub.docker.com/r/funkwerk/compose_diff/)
 [![PyPi downloads](https://img.shields.io/pypi/dm/compose_diff.svg)](https://pypi.python.org/pypi/compose_diff/)
 [![PyPi version](https://img.shields.io/pypi/v/compose_diff.svg)](https://pypi.python.org/pypi/compose_diff/)
 [![Docker pulls](https://img.shields.io/docker/pulls/funkwerk/compose_diff.svg)](https://hub.docker.com/r/funkwerk/compose_diff/)
