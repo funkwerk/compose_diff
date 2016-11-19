@@ -1,6 +1,6 @@
-Feature: Images
+Feature: Versions
   As a Tester
-  I want to see which images have changed
+  I want to see which image versions have changed
   so that I know where to test especially
 
   Scenario: Diff Images
@@ -26,7 +26,7 @@ Feature: Images
         three:
           image: three:1
       """
-    When I run `bin/compose_diff --images A.yml B.yml`
+    When I run `bin/compose_diff --versions A.yml B.yml`
     Then it should pass with exactly:
       """
       | Name | Version |
@@ -56,7 +56,7 @@ Feature: Images
         two:
           image: two:2
       """
-    When I run `bin/compose_diff --images --filter one A.yml B.yml`
+    When I run `bin/compose_diff --version --filter one A.yml B.yml`
     Then it should pass with exactly:
       """
       | Name | Version |

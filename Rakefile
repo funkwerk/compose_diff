@@ -14,7 +14,7 @@ end
 desc 'Checks style'
 task audit: :rubocop
 task :audit do
-  ignores = %w(D100 D101 D102 D103 D104 E501 I201)
+  ignores = %w(D100 D101 D102 D103 D104 E501 I201 N806)
 
   FILES = FileList[%w(bin/compose_diff compose_diff/*.py setup.py)]
   sh "flake8 --ignore='#{ignores * ','}' #{FILES}"
