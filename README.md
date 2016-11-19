@@ -6,6 +6,8 @@
 # compose_diff
 
 Diff docker-compose files.
+When deploying using docker-compose, these files could be used to generate Release Notes.
+Especially interesting is to diff two docker-compose Releases by each other, then customers know the changed components and testers know which part to especially test.
 
 ## Usage
 
@@ -16,9 +18,15 @@ Install it via:
 
 After that use it like
 
-`compose_diff --images old.yml new.yml`
-this will print the the differences in the used images between the two versions.
+`compose_diff --versions old.yml new.yml`
+this will print the differences in the used versions/tags between the two compose files.
+
+`compose_diff --instances old.yml new.yml`
+this will print the amount of instances of this image between the two compose files.
 
 ## Features
+
  - Support for Version 2 and Version 1.
- - Diffs Images
+ - Diffs Image Versions
+ - Diffs Image Instances
+ - Output in Markdown and CSV format
