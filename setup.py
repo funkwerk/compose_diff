@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name='compose_diff',
-    version='0.3.0',
+    version='0.4.0',
     description='diff docker-compose files',
     long_description=readme(),
     url='http://github.com/funkwerk/compose_diff',
