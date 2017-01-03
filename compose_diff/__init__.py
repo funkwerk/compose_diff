@@ -78,6 +78,10 @@ class ComposeDiff:
 
     @staticmethod
     def format_diff(old, new):
+        if old is not None and type(old) is list:
+            old = ', '.join(sorted(set(old)))
+        if new is not None and type(new) is list:
+            new = ', '.join(sorted(set(new)))
         if old is None:
             if new is None:
                 return ''
@@ -104,7 +108,9 @@ class ComposeDiff:
                 continue
             image_name, tag = ComposeDiff.split_image(content['image'])
 
-            result[image_name] = tag
+            if image_name not in result:
+                result[image_name] = []
+            result[image_name].append(tag)
         return result
 
     @staticmethod

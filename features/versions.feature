@@ -37,6 +37,33 @@ Feature: Versions
       | two | 2 (1) |
       """
 
+  Scenario: Multiple Versions for specific image
+    Given a file named "A.yml" with:
+      """
+      version: "2"
+      services:
+        one:
+          image: A:1
+        two:
+          image: A:2
+      """
+    And a file named "B.yml" with:
+      """
+      version: "2"
+      services:
+        one:
+          image: A:2
+        two:
+          image: A:3
+      """
+    When I run `bin/compose_diff --versions A.yml B.yml`
+    Then it should pass with exactly:
+      """
+      | Name | Version |
+      | - | - |
+      | A | 2, 3 (1, 2) |
+      """
+
   Scenario: Filter
     Given a file named "A.yml" with:
       """
